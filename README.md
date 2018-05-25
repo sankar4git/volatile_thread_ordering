@@ -32,6 +32,6 @@ if (thID == counter) {
 
 1> only one thread can enter the outermost if condition and till counter++ no other thread can enter.
 
-2> You know in multithreaded scenario actions of one thread may not be visible to another thread. There is a statement count++ and count is volatile. So all the prior assignments of variable c and variable print in this thread will be visible to other threads, as they satisfy if condition and enter the block.
+2> You know in multithreaded scenario actions of one thread may not be visible to another thread. There is a statement counter++ and counter is volatile. So all the prior assignments of variable c and variable print in this thread will be visible to other threads, as one of these threads satisfies if condition and enters the block, after counter is modified by current thread.
 
 That's all. Cheers!
