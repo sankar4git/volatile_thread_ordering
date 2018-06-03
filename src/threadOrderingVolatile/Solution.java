@@ -1,3 +1,5 @@
+//package threadOrderingVolatile;
+
 package threadOrderingVolatile;
 
 public class Solution {
@@ -26,7 +28,7 @@ public class Solution {
 		@Override
 		public void run() {
 			while(true) {
-				if (thID == counter) {
+				if (thID == (counter%total)) {
 					System.out.println("thread " + thID + " prints " + c);
 					if(c=='Z'){
 						c='A';
@@ -34,9 +36,7 @@ public class Solution {
 						c=(char)((int)c+1);
 					}
 					System.out.println("thread " + thID + " prints " + print++);
-					counter++;
-					if (counter == total)
-						counter = 0;
+					counter++;					
 				} else {
 					try {
 						Thread.sleep(30);
