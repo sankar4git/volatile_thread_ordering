@@ -16,18 +16,16 @@ thread 3 prints 4
 
 The code does this gracefully. How volatile makes this possible. See the following snippet.
 
-if (thID == counter) {					
-  System.out.println("thread " + thID + " prints " + c);
-  if(c=='Z'){						
-    c='A';					
-  }else{						
-    c=(char)((int)c+1);					
-  }					
-  System.out.println("thread " + thID + " prints " + print++);
-  counter++;					
-  if (counter == total)						
-    counter = 0;				
-}
+ if (thID == (counter%total)) {
+					System.out.println("thread " + thID + " prints " + c);
+					if(c=='Z'){
+						c='A';
+					}else{
+						c=(char)((int)c+1);
+					}
+					System.out.println("thread " + thID + " prints " + print++);
+					counter++;					
+	}
 
 
 1> only one thread can enter the outermost if condition and till counter++ no other thread can enter.
